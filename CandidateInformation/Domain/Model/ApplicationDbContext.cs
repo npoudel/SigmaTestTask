@@ -9,5 +9,6 @@ namespace Domain.Model
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<Candidate> Candidates { get; set; }
     }
 }
