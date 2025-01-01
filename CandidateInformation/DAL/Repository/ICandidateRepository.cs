@@ -5,6 +5,11 @@ namespace DAL
     public interface ICandidateRepository
     {
         /// <summary>
+        /// find all candidates
+        /// </summary>
+        /// <returns></returns>
+        List<Candidate> GetAllCandidates();
+        /// <summary>
         /// get all candidate details by id
         /// </summary>
         /// <param name="email"></param>

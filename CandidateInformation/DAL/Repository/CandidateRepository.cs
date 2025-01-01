@@ -1,6 +1,5 @@
 ﻿using Domain.Model;
-using System.Data.Entity;
-
+using Microsoft.EntityFrameworkCore;
 namespace DAL
 {
     public class CandidateRepository : ICandidateRepository
@@ -9,6 +8,11 @@ namespace DAL
         public CandidateRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public List<Candidate> GetAllCandidates() 
+        {
+            return  _dbContext.Candidates.ToList();
         }
 
         /// <summary>

@@ -1,10 +1,5 @@
 ﻿using DAL;
 using Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.CandidateService
 {
@@ -41,6 +36,11 @@ namespace BLL.CandidateService
                 _repository.AddCandidate(candidate);
             }
             _repository.SaveChanges();
+        }
+
+        public List<Candidate> GetCandidates()
+        {
+            return _repository.GetAllCandidates();
         }
     }
 }

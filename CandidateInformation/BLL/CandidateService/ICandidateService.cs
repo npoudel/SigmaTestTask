@@ -9,6 +9,15 @@ namespace BLL
 {
     public interface ICandidateService
     {
+        /// <summary>
+        /// add or update candidate
+        /// </summary>
+        /// <param name="candidate"></param>
         void AddOrUpdateCandidate(Candidate candidate);
+        /// <summary>
+        /// get all candidates
+        /// </summary>
+        /// <returns></returns>
+        List<Candidate> GetCandidates();
     }
 }

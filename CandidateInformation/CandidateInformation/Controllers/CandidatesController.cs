@@ -1,7 +1,6 @@
 ﻿using BLL;
 using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq.Expressions;
 
 namespace CandidateInformation.Controllers
 {
@@ -23,10 +22,17 @@ namespace CandidateInformation.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        [HttpGet("[action]", Name = "Index")]
-        public IActionResult Index()
+        [HttpGet("[action]", Name = "GetCandidates")]
+        public IActionResult GetCandidates()
         {
-            return Ok(new { Message = "API called successfully." });
+            try
+            {
+                return Ok(_candidateService.GetCandidates());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
 
         /// <summary>
@@ -47,7 +53,7 @@ namespace CandidateInformation.Controllers
                 _candidateService.AddOrUpdateCandidate(candidate);
                 return Ok(new { Message = "Candidate saved successfully." });
             }
-            catch
+            catch(Exception ex)
             {
                 return BadRequest();
             }            
