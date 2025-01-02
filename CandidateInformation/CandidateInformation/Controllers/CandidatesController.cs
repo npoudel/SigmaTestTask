@@ -25,14 +25,8 @@ namespace CandidateInformation.Controllers
         [HttpGet("[action]", Name = "GetCandidates")]
         public IActionResult GetCandidates()
         {
-            try
-            {
-                return Ok(_candidateService.GetCandidates());
-            }
-            catch (Exception ex)
-            {
-                return BadRequest();
-            }
+
+            return Ok(_candidateService.GetCandidates());
         }
 
         /// <summary>
@@ -41,22 +35,15 @@ namespace CandidateInformation.Controllers
         /// <param name="candidate"></param>
         /// <returns></returns>
 
-        [HttpPost("[action]",Name = "AddOrUpdateCandidate")]
+        [HttpPost("[action]", Name = "AddOrUpdateCandidate")]
         public IActionResult AddOrUpdateCandidate([FromBody] Candidate candidate)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            try
-            {
-                _candidateService.AddOrUpdateCandidate(candidate);
-                return Ok(new { Message = "Candidate saved successfully." });
-            }
-            catch(Exception ex)
-            {
-                return BadRequest();
-            }            
+            _candidateService.AddOrUpdateCandidate(candidate);
+            return Ok(new { Message = "Candidate saved successfully." });
         }
     }
 }

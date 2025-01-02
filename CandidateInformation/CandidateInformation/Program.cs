@@ -3,6 +3,7 @@ using BLL;
 using DAL;
 using Domain.Model;
 using Microsoft.EntityFrameworkCore;
+using CandidateInformation.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +29,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+//add middleware
+app.UseMiddleware<ErrorHandlingMiddleware>();
 //remove this if you are using any persistent database
 using var scope = app.Services.CreateScope();
 var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
